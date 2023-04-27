@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { AutocadastroComponent } from './autocadastro/autocadastro.component';
-
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -9,7 +10,9 @@ import { AutocadastroComponent } from './autocadastro/autocadastro.component';
     AutocadastroComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    RouterModule
   ]
 })
 export class ClienteModule { }
