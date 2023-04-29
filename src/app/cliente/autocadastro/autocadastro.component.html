@@ -5,7 +5,7 @@
         <div class="form-group">
             <label for="nome">Nome:</label>
             <input type="text" class="form-control" id="nome" name="nome" minlength="2" required
-            [(ngModel)]="cliente.nome"
+            [(ngModel)]="cliente.setNome"
             #nome="ngModel">
             <div *ngIf="nome.errors && (nome.dirty || nome.touched)" class="alert alert-danger">
                 <div [hidden]="!nome.errors['required']">Digite o nome da pessoa</div>

@@ -27,7 +27,6 @@ export class AutocadastroComponent implements OnInit{
 
   cadastrar():void{
     if(this.formCliente.valid){
-      console.log("entrou");
       this.clienteService.cadastrar(this.cliente);
       this.router.navigate(["/cliente"]);
     }
