@@ -18,10 +18,11 @@ export class ClienteServiceService {
   cadastrar(cliente:Cliente): void{
     const clientes = this.listarTodos();
 
-    cliente.setId = new Date().getMilliseconds(); 
+    cliente.id = new Date().getMilliseconds(); 
 
     clientes.push(cliente);
 
     localStorage[LS_CHAVE] = JSON.stringify(clientes);
+    console.log("entro 2");
   }
 }
