@@ -19,4 +19,12 @@ export class ListarClienteComponent implements OnInit {
   listarTodos(): Cliente[]{
     return this.clienteService.listarTodos();
   }
+
+  remover($event: any, cliente:Cliente): void{
+    $event.preventDefault();
+    if(confirm(`Deseja realmente remover o cliente ${cliente.nome}?`)){
+      this.clienteService.remover(cliente.id!);
+      this.clientes = this.listarTodos(); 
+    }
+  }
 }

@@ -45,5 +45,13 @@ export class ClienteService {
 
   }
 
+  remover(id:number):void{
+    let clientes: Cliente[] = this.listarTodos();
+
+    clientes = clientes.filter(cliente => cliente.id !== id);
+
+    localStorage[LS_CHAVE] = JSON.stringify(clientes);
+  }
+
 
 }
