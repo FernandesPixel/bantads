@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Cliente } from 'src/app/shared/model/cliente';
-import { ClienteService } from '../services/cliente-service';
+import { ClienteServiceService } from '../services/cliente-service.service';
 
 
 
@@ -17,7 +17,7 @@ export class AutocadastroComponent implements OnInit{
   cliente! :Cliente;
 
   constructor(
-    private clienteService: ClienteService,
+    private clienteService: ClienteServiceService,
     private router: Router
   ){}
 
@@ -27,7 +27,6 @@ export class AutocadastroComponent implements OnInit{
 
   cadastrar():void{
     if(this.formCliente.valid){
-      console.log("entrou");
       this.clienteService.cadastrar(this.cliente);
       this.router.navigate(["/cliente"]);
     }
