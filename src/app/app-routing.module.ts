@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AutocadastroComponent } from './cliente/autocadastro/autocadastro.component';
 import { ListarClienteComponent } from './cliente/listar-cliente/listar-cliente.component';
+import { EditarClienteComponent } from './cliente/editar-cliente/editar-cliente.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'cliente/listar',
     component: ListarClienteComponent
+  },
+  {
+    path: 'cliente/editar/:id',
+    component: EditarClienteComponent
   }
 ];
 

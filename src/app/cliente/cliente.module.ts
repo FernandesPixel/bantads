@@ -4,12 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { AutocadastroComponent } from './autocadastro/autocadastro.component';
 import { RouterModule } from '@angular/router';
 import { ListarClienteComponent } from './listar-cliente/listar-cliente.component';
+import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 
 
 @NgModule({
   declarations: [
     AutocadastroComponent,
-    ListarClienteComponent
+    ListarClienteComponent,
+    EditarClienteComponent
   ],
   imports: [
     CommonModule,

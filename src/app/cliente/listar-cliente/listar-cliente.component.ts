@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/shared/model/cliente';
-import { ClienteServiceService } from '../services/cliente-service.service';
+import { ClienteService } from '../services/cliente-service';
 
 @Component({
   selector: 'app-listar-cliente',
@@ -10,7 +10,7 @@ import { ClienteServiceService } from '../services/cliente-service.service';
 export class ListarClienteComponent implements OnInit {
   clientes:Cliente[] = [];
 
-  constructor(private clienteService: ClienteServiceService){}
+  constructor(private clienteService: ClienteService){}
 
   ngOnInit():void{
     this.clientes = this.listarTodos();
