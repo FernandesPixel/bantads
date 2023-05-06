@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cliente } from 'src/app/shared/model/cliente';
+import { Conta } from 'src/app/shared/model/conta';
+import { StatusConta } from 'src/app/shared/model/status-conta.enum';
 
 const LS_CHAVE:string = 'clientes';
 
@@ -18,7 +20,11 @@ export class ClienteService {
   cadastrar(cliente:Cliente): void{
     const clientes = this.listarTodos();
 
-    cliente.id = new Date().getMilliseconds(); 
+    cliente.id = new Date().getMilliseconds();
+
+    const conta = new Conta()
+    conta.status = StatusConta.PENDENTE
+    cliente.conta = conta
 
     clientes.push(cliente);
 
