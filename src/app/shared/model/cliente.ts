@@ -1,4 +1,5 @@
-// import { Conta } from "./conta";
+import { Conta } from "./conta";
+import { Endereco } from "./endereco";
 
 export class Cliente {
     private id:number = 0;
@@ -14,35 +15,13 @@ export class Cliente {
     //     this.conta = conta;
     // }
     
-    public get getId(): number {
-        return this.id;
-      }
-    
-    public set setId(id: number) {
-        this.id = id;
-    }
-
-    public get getNome(): string {
-        return this.nome;
-      }
-    
-    public set setNome(nome: string) {
-        this.nome = nome;
-    }
-
-    public set setSalario(salario:number){
-        this.salario = salario;
-    }
-
-    public get getSalario():number{
-        return this.salario;
-    }
-
-    // public set setConta(conta:Conta){
-    //     this.conta = conta;
-    // }
-
-    // public get getConta():Conta{
-    //     return this.conta;
-    // }
+    constructor(
+        public id? :number,
+        public nome? :string,
+        public email? :string,
+        public cpf? :string,
+        public endereco? :Endereco,
+        public telefone? :string,
+        public salario? :number
+    ){}
 }
