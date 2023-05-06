@@ -1,1 +1,37 @@
-<router-outlet></router-outlet>
+<div class="conteiner-fluid">
+    <nav class="navbar navbar-expand-md n navbar-dark bg-dark">
+      <a href="#" class="navbar-brand nav-link" routerLink="/home">
+        <i class="fa fa-user-edit"></i>
+      </a>
+  
+      <div class="navbar-collapse collapsed" id="navbarContent"></div>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/cliente">Cliente</a>
+          </li>  
+        </ul>   
+
+        <ul *ngIf="usuarioLogado" class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" (click)="logout()">Logout</a>
+            </li> 
+            
+            <li class="nav-item">
+                <p class="navbar-text mb-0 text-white">
+                    <i class="fa fa-user"></i>{{usuarioLogado.nome}}
+                </p>
+            </li> 
+        </ul>
+  
+      <li class="nav-item" ngbDropdown>
+        <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" 
+        role="button" style="background-color: aliceblue;">Cadastros</a>
+        <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu">
+          <a href="#" ngbDropdownItem routerLink="/pessoas" (click)="$event.preventDefault()">Teste</a>
+        </div>
+      </li>
+    </nav>
+  
+    <router-outlet></router-outlet>
+  
+  </div>
