@@ -35,15 +35,26 @@ export class ClienteService {
   }
 
   cadastrar(cliente:Cliente): void{
-    const clientes = this.listarTodos();
-    cliente.senha = this.gerarSenhaAleatoria();
-    cliente.id = new Date().getMilliseconds();
-    cliente.login = cliente.email; 
-    cliente.perfil = "ADMIN";
-    console.log(cliente.senha)
-    clientes.push(cliente);
-    localStorage[LS_CHAVE] = JSON.stringify(clientes);
-    this.cadastrarUsuario(cliente);
+    if(this.clienteValido(cliente)){
+      cliente.senha = this.gerarSenhaAleatoria();
+      cliente.id = new Date().getMilliseconds();
+      cliente.login = cliente.email; 
+      cliente.perfil = "ADMIN";
+      console.log(cliente.senha)
+
+      const clientes = this.listarTodos();
+      clientes.push(cliente);
+      localStorage[LS_CHAVE] = JSON.stringify(clientes);
+      this.cadastrarUsuario(cliente);
+    }
+  }
+
+  clienteValido(cliente:Cliente):boolean{
+    let clientes = this.listarTodos();
+    if(clientes.find(clienteCadastrado => clienteCadastrado.cpf === cliente.cpf )){
+      return false;
+    }
+    return true;
   }
 
   buscarPorId(id:number):Cliente | undefined{

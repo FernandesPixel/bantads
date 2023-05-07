@@ -5,8 +5,6 @@ import { Router } from '@angular/router';
 import { Cliente } from 'src/app/shared/model/cliente';
 import { ClienteService } from '../services/cliente-service';
 
-
-
 @Component({
   selector: 'app-autocadastro',
   templateUrl: './autocadastro.component.html',
@@ -16,6 +14,7 @@ export class AutocadastroComponent implements OnInit{
 
 formulario: FormGroup;
 cliente: Cliente;
+message!: string;
 
 constructor(
   private formBuilder: FormBuilder,
@@ -25,6 +24,7 @@ constructor(
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
       email: [null, [Validators.required, Validators.email]],
+      cpf: [null, [Validators.required]],
       salario: [null, [Validators.required]],
       endereco: this.formBuilder.group({
         cep: [null, [Validators.required]],
@@ -46,6 +46,7 @@ constructor(
   onSubmit(){
     if(this.formulario.valid){
       this.cliente = this.formulario.value as Cliente;
+      console.log(this.cliente.salario);
       this.cadastrar(this.cliente);
     }
   }
@@ -70,8 +71,13 @@ constructor(
   }
 
   cadastrar(cliente :Cliente):void{
-    this.clienteService.cadastrar(cliente);
-    this.router.navigate(["/cliente/listar"]);
+    if(this.clienteService.clienteValido(cliente)){
+      this.clienteService.cadastrar(cliente);
+      this.router.navigate(["/cliente/listar"]);
+    }else{
+      this.message = "Cada cliente só pode ter uma conta no BANTADS"
+      this.router.navigate(["/cliente/cadastro"]);
+    }
   }
 
 }
