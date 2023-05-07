@@ -8,6 +8,8 @@ import { TelaInicialComponent } from './gerente/tela-inicial/tela-inicial.compon
 import { ListarClientesComponent } from './gerente/listar-clientes/listar-clientes.component';
 import { ConsultarClienteComponent } from './gerente/consultar-cliente/consultar-cliente.component';
 import { ConsultarMelhoresClientesComponent } from './gerente/consultar-melhores-clientes/consultar-melhores-clientes.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { ConsultarMelhoresClientesComponent } from './gerente/consultar-melhores
     TelaInicialComponent,
     ListarClientesComponent,
     ConsultarClienteComponent,
-    ConsultarMelhoresClientesComponent
+    ConsultarMelhoresClientesComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ClienteModule
+    ClienteModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]
