@@ -39,7 +39,7 @@ export class ClienteService {
       cliente.senha = this.gerarSenhaAleatoria();
       cliente.id = new Date().getMilliseconds();
       cliente.login = cliente.email; 
-      cliente.perfil = "ADMIN";
+      cliente.perfil = "CLIENTE";
       console.log(cliente.senha)
 
       const clientes = this.listarTodos();

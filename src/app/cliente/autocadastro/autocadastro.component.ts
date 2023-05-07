@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 
 import { Cliente } from 'src/app/shared/model/cliente';
 import { ClienteService } from '../services/cliente-service';
+import { LoginService } from 'src/app/auth/services/login.service';
+import { Login } from 'src/app/shared/model/login.model';
 
 @Component({
   selector: 'app-autocadastro',
@@ -19,7 +21,8 @@ message!: string;
 constructor(
   private formBuilder: FormBuilder,
   private router: Router,
-  private clienteService: ClienteService
+  private clienteService: ClienteService,
+  private loginService: LoginService
   ) { 
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
@@ -73,7 +76,9 @@ constructor(
   cadastrar(cliente :Cliente):void{
     if(this.clienteService.clienteValido(cliente)){
       this.clienteService.cadastrar(cliente);
-      this.router.navigate(["/cliente/listar"]);
+      this.message = "Solicitação de abertura de conta enviada!"
+      this.loginService.login(new Login(cliente.login,cliente.senha));
+      this.router.navigate(["/cliente/home"]);
     }else{
       this.message = "Cada cliente só pode ter uma conta no BANTADS"
       this.router.navigate(["/cliente/cadastro"]);

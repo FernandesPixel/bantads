@@ -7,6 +7,7 @@ import { EditarClienteComponent } from './cliente/editar-cliente/editar-cliente.
 import { LoginRoutes } from './auth-routin.module';
 import { AuthGuard } from './auth/auth.guard';
 import { HomeComponent } from './home/home/home.component';
+import { HomeClienteComponent } from './cliente/home-cliente/home-cliente.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,14 @@ const routes: Routes = [
   {
     path: 'cliente/cadastro',
     component: AutocadastroComponent
+  },
+  {
+    path: 'cliente/home',
+    component: HomeClienteComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'CLIENTE'
+    }   
   },
   {
     path: 'cliente/listar',

@@ -7,6 +7,7 @@ import { ListarClienteComponent } from './listar-cliente/listar-cliente.componen
 import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 import { CampoControlErroComponent } from '../campo-control-erro/campo-control-erro.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { HomeClienteComponent } from './home-cliente/home-cliente.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     ListarClienteComponent,
     EditarClienteComponent,
     CampoControlErroComponent,
+    HomeClienteComponent,
   ],
   imports: [
     CommonModule,

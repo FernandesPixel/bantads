@@ -39,7 +39,11 @@ export class LoginComponent implements OnInit{
         if(usu != null){
           this.loginService.usuarioLogado = usu;
           this.loading = false;
-          this.router.navigate(['/home']);
+          if(usu.perfil == "CLIENTE"){
+            this.router.navigate(['/cliente/home']);
+          }else{
+            this.router.navigate(['/home']);
+          }
         }else{
           this.loading = false;
           this.message = "Usuário/Senha inválidos";
