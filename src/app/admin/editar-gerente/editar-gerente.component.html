@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a [routerLink]="['/admin']" class="nav-link" >Voltar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sair</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <h1>Editar gerente</h1>
+
+  <div class="well">
+      <form #formGerente="ngForm">
+          <div class="form-group">
+              <label for="nome">Nome:</label>
+              <input type="text" class="form-control" id="nome" name="nome" minlength="2" required
+              [(ngModel)]="gerente.nome"
+              #nome="ngModel">
+              <div *ngIf="nome.errors && (nome.dirty || nome.touched)" class="alert alert-danger">
+                  <div [hidden]="!nome.errors['required']">Digite o nome da pessoa</div>
+                  <div [hidden]="!nome.errors['minlength']">O nome deve conter ao menos 2 caracteres.</div>
+              </div>
+          </div>
+  
+          <div class="form-group">
+              <label for="cpf">CPF:</label>
+              <input type="text" class="form-control" id="cpf" name="cpf" required
+              [(ngModel)]="gerente.cpf"
+              #cpf="ngModel">
+              <div *ngIf="cpf.errors && (cpf.dirty || cpf.touched)" class="alert alert-danger">
+                  <div [hidden]="!cpf.errors['required']">Digite o CPF.</div>
+              </div>
+          </div>
+  
+          <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" class="form-control" id="email" name="email" required
+              [(ngModel)]="gerente.email"
+              #email="ngModel">
+              <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+                  <div [hidden]="!email.errors['required']">Digite o email.</div>
+              </div>
+          </div>
+  
+          <div class="form-group">
+              <label for="telefone">Telefone:</label>
+              <input type="text" class="form-control" id="telefone" name="telefone" required
+              [(ngModel)]="gerente.telefone"
+              #telefone="ngModel">
+              <div *ngIf="telefone.errors && (telefone.dirty || telefone.touched)" class="alert alert-danger">
+                  <div [hidden]="!telefone.errors['required']">Digite o telefone.</div>
+              </div>
+          </div>
+  
+          <div class="form-group">
+              <button type="button" class="btn btn-primary"
+                  (click)="atualizar()"
+                  [disabled]="!formGerente.form.valid"
+              >
+                  <i class="fa fa-save" aria-hidden="true"></i> 
+                  Atualizar
+              </button>
+              <a class="btn btn-secondary" [routerLink]="['/adm']">
+                  <i class="fa fa-arrow-left" aria-hidden="true"></i>Voltar
+              </a>
+          </div>
+      </form>
+  </div>

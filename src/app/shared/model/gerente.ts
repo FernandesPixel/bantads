@@ -1,6 +1,9 @@
 export class Gerente {
     constructor(
-        private id? :number,
-        private nome? :string
+        public id? :number,
+        public nome? :string,
+        public cpf? :string,
+        public email? :string,
+        public telefone? :string
     ){}
 }
