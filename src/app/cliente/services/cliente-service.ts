@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Cliente } from 'src/app/shared/model/cliente';
 import { Usuario } from 'src/app/shared/model/usuario.model';
+import { Conta } from 'src/app/shared/model/conta';
+import { StatusConta } from 'src/app/shared/model/status-conta.enum';
 
 const LS_CHAVE:string = 'clientes';
 const USER_CHAVE:string = 'usuarios';

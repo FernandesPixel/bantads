@@ -1,11 +1,16 @@
-// import { Conta } from "./conta";
-
 import { Conta } from "./conta";
 import { Endereco } from "./endereco";
+import { StatusConta } from "./status-conta.enum";
 import { Usuario } from "./usuario.model";
 
 export class Cliente extends Usuario{
-    public conta? :Conta;
+    public conta? :Conta = new Conta(
+        new Date().getMilliseconds(),
+        0,
+        undefined,
+        StatusConta.PENDENTE,
+        undefined
+    );
     
     constructor(
         override id?: number,

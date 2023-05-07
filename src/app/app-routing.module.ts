@@ -8,6 +8,10 @@ import { LoginRoutes } from './auth-routin.module';
 import { AuthGuard } from './auth/auth.guard';
 import { HomeComponent } from './home/home/home.component';
 import { HomeClienteComponent } from './cliente/home-cliente/home-cliente.component';
+import { ConsultarClienteComponent } from './gerente/consultar-cliente/consultar-cliente.component';
+import { ConsultarMelhoresClientesComponent } from './gerente/consultar-melhores-clientes/consultar-melhores-clientes.component';
+import { ListarClientesComponent } from './gerente/listar-clientes/listar-clientes.component';
+import { TelaInicialComponent } from './gerente/tela-inicial/tela-inicial.component';
 
 const routes: Routes = [
   {
@@ -45,7 +49,23 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {
       role: 'CLIENTE'
-    }
+    }  
+  },
+  {
+    path: 'gerente',
+    component: TelaInicialComponent
+  },
+  {
+    path: 'gerente/consultar-cliente',
+    component: ConsultarClienteComponent
+  },
+  {
+    path: 'gerente/consultar-melhores-clientes',
+    component: ConsultarMelhoresClientesComponent
+  },
+  {
+    path: 'gerente/listar-clientes',
+    component: ListarClientesComponent
   },
   {
     path: 'home',

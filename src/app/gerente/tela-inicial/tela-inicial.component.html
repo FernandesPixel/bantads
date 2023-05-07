@@ -1,0 +1,29 @@
+<h1>Clientes</h1>
+
+<table class="table table-striped table-bordered table-hover">
+    <tbody>
+        <tr>
+            <th>CPF</th>
+            <th>Nome</th>
+            <th>Salário
+            </th>
+        </tr>
+        <tr *ngFor="let cliente of clientes">
+            <td>{{ cliente.id }}</td>
+            <td>{{ cliente.nome }}</td>
+            <td>{{ cliente.salario }}</td>
+            <td class="text-center" style="width: 300px;">
+                <a href="#" title="Aprovar" alt="Aprovar" class="btn btn-xs btn-info"
+                    (click)="aprovarCliente($event, cliente)">
+                    <i class="fa fa-times" aria-label="true">Aprovar</i>
+                </a>
+                
+                <a href="#" title="Desaprovar" alt="Desaprovar" class="btn btn-xs btn-info"
+                    (click)="recusarCliente($event, cliente, 'motivo')">
+                    <i class="fa fa-times" aria-label="true">Desaprovar</i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+    <p *ngIf="clientes.length==0">Nenhum autocadastro pendente</p>
+</table>
