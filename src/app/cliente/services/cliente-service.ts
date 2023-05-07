@@ -3,6 +3,7 @@ import { Cliente } from 'src/app/shared/model/cliente';
 import { Usuario } from 'src/app/shared/model/usuario.model';
 import { Conta } from 'src/app/shared/model/conta';
 import { StatusConta } from 'src/app/shared/model/status-conta.enum';
+import { Gerente } from 'src/app/shared/model/gerente';
 
 const LS_CHAVE:string = 'clientes';
 const USER_CHAVE:string = 'usuarios';
@@ -41,10 +42,9 @@ export class ClienteService {
       cliente.senha = this.gerarSenhaAleatoria();
       cliente.id = new Date().getMilliseconds();
       cliente.login = cliente.email;
-      if(cliente.salario && cliente.conta){
-        cliente.conta.limite = cliente.salario/2; 
-      }
       cliente.perfil = "CLIENTE";
+      cliente.conta = this.criarConta(cliente.salario);
+      
       console.log(cliente.senha)
 
       const clientes = this.listarTodos();
@@ -52,6 +52,12 @@ export class ClienteService {
       localStorage[LS_CHAVE] = JSON.stringify(clientes);
       this.cadastrarUsuario(cliente);
     }
+  }
+
+  criarConta(salario:number):Conta{
+    let gerente = new Gerente(1,"Gerente");
+    let conta = new Conta(new Date().getMilliseconds(),0,salario/2,StatusConta.PENDENTE,gerente);
+    return conta;
   }
 
   clienteValido(cliente:Cliente):boolean{
