@@ -77,7 +77,7 @@ constructor(
     if(this.clienteService.clienteValido(cliente)){
       this.clienteService.cadastrar(cliente);
       this.message = "Solicitação de abertura de conta enviada!"
-      this.loginService.login(new Login(cliente.login,cliente.senha));
+      this.loginService.logar(new Login(cliente.login,cliente.senha));
       this.router.navigate(["/cliente/home"]);
     }else{
       this.message = "Cada cliente só pode ter uma conta no BANTADS"

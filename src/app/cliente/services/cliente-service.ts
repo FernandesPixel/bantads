@@ -38,7 +38,10 @@ export class ClienteService {
     if(this.clienteValido(cliente)){
       cliente.senha = this.gerarSenhaAleatoria();
       cliente.id = new Date().getMilliseconds();
-      cliente.login = cliente.email; 
+      cliente.login = cliente.email;
+      if(cliente.salario && cliente.conta){
+        cliente.conta.limite = cliente.salario/2; 
+      }
       cliente.perfil = "CLIENTE";
       console.log(cliente.senha)
 
@@ -59,7 +62,6 @@ export class ClienteService {
 
   buscarPorId(id:number):Cliente | undefined{
     const clientes: Cliente[] = this.listarTodos();
-
     return clientes.find(cliente => cliente.id === id);
   }
 
@@ -68,6 +70,14 @@ export class ClienteService {
 
     clientes.forEach((obj, index, objs) => {
       if(cliente.id === obj.id){
+        let clienteAntigo = obj;
+        if(cliente.salario !== clienteAntigo.salario){
+          if(cliente.conta && cliente.salario && clienteAntigo.salario){
+            cliente.conta.limite = this.calcularNovoLimite(cliente.salario,clienteAntigo.salario,cliente.conta.saldo);
+          }
+        }
+        console.log(cliente.id);
+        console.log(cliente);
         objs[index] = cliente;
       }
     });
@@ -75,6 +85,14 @@ export class ClienteService {
     console.log(clientes);
     localStorage[LS_CHAVE] = JSON.stringify(clientes);
 
+  }
+
+  private calcularNovoLimite(novoSalario:number, antigoSalario:number, saldo:number):number{
+    let novoLimite = novoSalario/2;
+    if(saldo<0 && novoLimite<saldo){
+      novoLimite = saldo;
+    }
+    return novoLimite;
   }
 
   remover(id:number):void{

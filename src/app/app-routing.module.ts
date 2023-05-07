@@ -36,7 +36,7 @@ const routes: Routes = [
     component: ListarClienteComponent,
     canActivate: [AuthGuard],
     data: {
-      role: 'ADMIN,GERENTE,FUNC'
+      role: 'ADMIN,CLIENTE'
     }    
   },
   {
@@ -44,7 +44,7 @@ const routes: Routes = [
     component: EditarClienteComponent,
     canActivate: [AuthGuard],
     data: {
-      role: 'ADMIN,GERENTE,FUNC'
+      role: 'CLIENTE'
     }
   },
   {
@@ -52,7 +52,7 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [AuthGuard],
     data: {
-      role: 'ADMIN,GERENTE,FUNC'
+      role: 'ADMIN,GERENTE,CLIENTE'
     }
   },
   ...LoginRoutes

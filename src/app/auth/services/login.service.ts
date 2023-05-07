@@ -50,5 +50,14 @@ export class LoginService {
 
   }
 
+  public logar(login:Login){
+    if(login){
+      this.login(login).subscribe((usu) =>{
+        if(usu != null){
+          this.usuarioLogado = usu;
+        }
+      })
+    }
+  }
 
 }

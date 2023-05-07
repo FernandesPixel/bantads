@@ -8,7 +8,7 @@ import { EditarClienteComponent } from './editar-cliente/editar-cliente.componen
 import { CampoControlErroComponent } from '../campo-control-erro/campo-control-erro.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { HomeClienteComponent } from './home-cliente/home-cliente.component';
-
+import { AuthModule } from '../auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import { HomeClienteComponent } from './home-cliente/home-cliente.component';
     FormsModule,
     RouterModule,
     NgxMaskDirective, 
-    NgxMaskPipe
+    NgxMaskPipe,
+    AuthModule
   ],
   providers: [provideNgxMask()]
 })
