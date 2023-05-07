@@ -13,23 +13,23 @@ export class TelaInicialComponent {
   constructor(private gerenteService: GerenteService){}
 
   ngOnInit():void{
-    this.clientes = this.obterPedidosAutocadastro();
+    this.clientes = this.obterClientesPendentes();
   }
 
-  obterPedidosAutocadastro(): Cliente[]{
-    return this.gerenteService.obterPedidosAutocadastro();
+  obterClientesPendentes(): Cliente[]{
+    return this.gerenteService.obterClientesPendentes();
   }
 
   aprovarCliente($event: any, cliente:Cliente): void{
     $event.preventDefault();
       this.gerenteService.aprovarCliente(cliente);
-      this.clientes = this.obterPedidosAutocadastro(); 
+      this.clientes = this.obterClientesPendentes(); 
   }
 
   recusarCliente($event: any, cliente:Cliente, motivo:string): void{
     $event.preventDefault();
       this.gerenteService.recusarCliente(cliente, motivo);
-      this.clientes = this.obterPedidosAutocadastro(); 
+      this.clientes = this.obterClientesPendentes(); 
   }
 }
 
