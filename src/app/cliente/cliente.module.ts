@@ -11,6 +11,7 @@ import { HomeClienteComponent } from './home-cliente/home-cliente.component';
 import { AuthModule } from '../auth/auth.module';
 import { DepositarComponent } from './depositar/depositar.component';
 import { SacarComponent } from './sacar/sacar.component';
+import { TransferirComponent } from './transferir/transferir.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SacarComponent } from './sacar/sacar.component';
     HomeClienteComponent,
     DepositarComponent,
     SacarComponent,
+    TransferirComponent,
   ],
   imports: [
     CommonModule,

@@ -131,18 +131,49 @@ export class ClienteService {
   }
 
   sacar(cliente:Cliente, quantia:number): boolean{
-    let saldo:number = cliente.conta.saldo;
-    let limite: number = cliente.conta.limite;
+    return this.debitar(cliente.conta, quantia);
+  }
+
+  debitar(conta:Conta, quantia:number):boolean{
+    let saldo:number = conta.saldo;
+    let limite: number = conta.limite;
     if(saldo+limite>quantia){
-      cliente.conta.saldo = Number(cliente.conta.saldo) - Number(quantia);
+      conta.saldo = Number(conta.saldo) - Number(quantia);
       if(saldo-quantia<0){
         quantia = quantia - saldo;
-        cliente.conta.limite = limite - Number(quantia);
-        console.log(cliente.conta.limite);
+        conta.limite = limite - Number(quantia);
       }
-      this.atualizar(cliente);
+      this.atualizarConta(conta);
       return true;
     }
     return false;
+  }
+
+  creditar(conta:Conta, quantia:number){
+    conta.saldo = Number(conta.saldo) + Number(quantia); 
+    this.atualizarConta(conta);
+  }
+
+  atualizarConta(conta:Conta){
+    const clientes: Cliente[] = this.listarTodos();
+    clientes.forEach((obj, index, objs) => {
+      if(conta.id === obj.conta.id){
+        objs[index].conta = conta;
+      }
+    });
+    localStorage[LS_CHAVE] = JSON.stringify(clientes);
+  }
+
+  buscarConta(contaId:Number):Conta | undefined{
+    const clientes: Cliente[] = this.listarTodos();
+    let cliente = clientes.find(cliente => cliente.conta.id === Number(contaId));
+    return cliente?.conta;
+  }
+
+  transferir(contaDebitada:Conta, contaCreditada:Conta, quantia:number){
+    if(quantia>0 && (contaDebitada.saldo+contaDebitada.limite)>quantia){
+      this.debitar(contaDebitada, quantia);
+      this.creditar(contaCreditada, quantia);
+    }
   }
 }
