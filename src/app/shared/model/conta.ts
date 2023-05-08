@@ -4,9 +4,10 @@ import { StatusConta } from "./status-conta.enum";
 export class Conta {
     constructor(
         public id? :number,
-        public limite? :number,
-        public status? :StatusConta,
-        public gerente? :Gerente
+        public saldo :number = 0,
+        public limite :number = 0,
+        public status :StatusConta = StatusConta.PENDENTE,
+        public gerente :Gerente = new Gerente()
     ){}
 
 }

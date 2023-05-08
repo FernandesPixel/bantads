@@ -8,6 +8,7 @@ import { TelaInicialComponent } from './gerente/tela-inicial/tela-inicial.compon
 import { ListarClientesComponent } from './gerente/listar-clientes/listar-clientes.component';
 import { ConsultarClienteComponent } from './gerente/consultar-cliente/consultar-cliente.component';
 import { ConsultarMelhoresClientesComponent } from './gerente/consultar-melhores-clientes/consultar-melhores-clientes.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ConsultarMelhoresClientesComponent } from './gerente/consultar-melhores
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ClienteModule
+    ClienteModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,28 +1,28 @@
-import { Injectable } from '@angular/core';
-import { Cliente } from 'src/app/shared/model/cliente';
+// import { Injectable } from '@angular/core';
+// import { Cliente } from 'src/app/shared/model/cliente';
 
-const LS_CHAVE:string = 'clientes';
+// const LS_CHAVE:string = 'clientes';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class ClienteServiceService {
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class ClienteServiceService {
 
-  constructor() { }
+//   constructor() { }
 
-  listarTodos(): Cliente[]{
-    const clientes = localStorage[LS_CHAVE];
-    return clientes ? JSON.parse(clientes) : [];
-  }
+//   listarTodos(): Cliente[]{
+//     const clientes = localStorage[LS_CHAVE];
+//     return clientes ? JSON.parse(clientes) : [];
+//   }
 
-  cadastrar(cliente:Cliente): void{
-    const clientes = this.listarTodos();
+//   cadastrar(cliente:Cliente): void{
+//     const clientes = this.listarTodos();
 
-    cliente.id = new Date().getMilliseconds(); 
+//     cliente.id = new Date().getMilliseconds(); 
 
-    clientes.push(cliente);
+//     clientes.push(cliente);
 
-    localStorage[LS_CHAVE] = JSON.stringify(clientes);
-    console.log("entro 2");
-  }
-}
+//     localStorage[LS_CHAVE] = JSON.stringify(clientes);
+//     console.log("entro 2");
+//   }
+// }
