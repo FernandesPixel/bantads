@@ -121,4 +121,11 @@ export class ClienteService {
     }
     return senha;
   }
+
+  depositar(cliente:Cliente, quantia:number){
+    console.log("saldo atual:"+cliente.conta.saldo);
+    cliente.conta.saldo = Number(cliente.conta.saldo) + Number(quantia);
+    console.log("saldo novo:"+cliente.conta.saldo);
+    this.atualizar(cliente); 
+  }
 }

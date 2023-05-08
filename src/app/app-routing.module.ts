@@ -12,6 +12,7 @@ import { ConsultarClienteComponent } from './gerente/consultar-cliente/consultar
 import { ConsultarMelhoresClientesComponent } from './gerente/consultar-melhores-clientes/consultar-melhores-clientes.component';
 import { ListarClientesComponent } from './gerente/listar-clientes/listar-clientes.component';
 import { TelaInicialComponent } from './gerente/tela-inicial/tela-inicial.component';
+import { DepositarComponent } from './cliente/depositar/depositar.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,14 @@ const routes: Routes = [
   {
     path: 'cliente/editar/:id',
     component: EditarClienteComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'CLIENTE'
+    }  
+  },
+  {
+    path: 'cliente/depositar/:id',
+    component: DepositarComponent,
     canActivate: [AuthGuard],
     data: {
       role: 'CLIENTE'

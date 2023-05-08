@@ -9,6 +9,7 @@ import { CampoControlErroComponent } from '../campo-control-erro/campo-control-e
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { HomeClienteComponent } from './home-cliente/home-cliente.component';
 import { AuthModule } from '../auth/auth.module';
+import { DepositarComponent } from './depositar/depositar.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AuthModule } from '../auth/auth.module';
     EditarClienteComponent,
     CampoControlErroComponent,
     HomeClienteComponent,
+    DepositarComponent,
   ],
   imports: [
     CommonModule,
