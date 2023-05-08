@@ -1,1 +1,25 @@
-<p>listar-clientes works!</p>
+<h1>Clientes</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <tbody>
+    <tr>
+      <th>CPF</th>
+      <th>Nome</th>
+      <th>Salário</th>
+      <th>Gerente</th>
+      <th>Limite</th>
+      <th>Ações</th>
+    </tr>
+    <tr *ngFor="let cliente of clientes">
+      <td>{{ cliente.id }}</td>
+      <td>{{ cliente.nome }}</td>
+      <td>{{ cliente.salario }}</td>
+      <td>{{ cliente.conta?.gerente }}</td>
+      <td>{{ cliente.conta?.limite }}</td>
+      <td class="text-center" style="width: 300px;">
+        <a [routerLink]="['/cliente', cliente.id]">Ver detalhes</a>
+      </td>
+    </tr>
+  </tbody>
+  <p *ngIf="clientes.length === 0">Nenhum cliente encontrado</p>
+</table>

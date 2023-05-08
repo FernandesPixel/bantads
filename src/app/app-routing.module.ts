@@ -65,7 +65,7 @@ const routes: Routes = [
     component: TelaInicialComponent
   },
   {
-    path: 'gerente/consultar-cliente',
+    path: 'gerente/consultar-cliente/:id',
     component: ConsultarClienteComponent
   },
   {

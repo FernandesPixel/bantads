@@ -16,11 +16,19 @@ export class GerenteService {
     return clientes ? JSON.parse(clientes) : [];
   }
 
-  obterPedidosAutocadastro(): Cliente[]{
+  obterClientesPendentes(): Cliente[] {
     const clientes = this.listarTodos();
     return clientes.filter(
-      cliente => cliente.conta && 
-      cliente.conta.status == StatusConta.PENDENTE
+      cliente => cliente.conta &&
+      cliente.conta.status === StatusConta.PENDENTE
+    );
+  }
+
+  obterClientesAtivos(): Cliente[] {
+    const clientes = this.listarTodos();
+    return clientes.filter(
+      cliente => cliente.conta &&
+      cliente.conta.status === StatusConta.ATIVA
     );
   }
 
