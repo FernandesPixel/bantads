@@ -123,9 +123,26 @@ export class ClienteService {
   }
 
   depositar(cliente:Cliente, quantia:number){
-    console.log("saldo atual:"+cliente.conta.saldo);
     cliente.conta.saldo = Number(cliente.conta.saldo) + Number(quantia);
-    console.log("saldo novo:"+cliente.conta.saldo);
+    if(cliente.conta.saldo >= 0){
+      cliente.conta.limite = cliente.salario/2;
+    }
     this.atualizar(cliente); 
+  }
+
+  sacar(cliente:Cliente, quantia:number): boolean{
+    let saldo:number = cliente.conta.saldo;
+    let limite: number = cliente.conta.limite;
+    if(saldo+limite>quantia){
+      cliente.conta.saldo = Number(cliente.conta.saldo) - Number(quantia);
+      if(saldo-quantia<0){
+        quantia = quantia - saldo;
+        cliente.conta.limite = limite - Number(quantia);
+        console.log(cliente.conta.limite);
+      }
+      this.atualizar(cliente);
+      return true;
+    }
+    return false;
   }
 }
