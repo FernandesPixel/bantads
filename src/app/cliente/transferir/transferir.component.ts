@@ -43,10 +43,10 @@ export class TransferirComponent {
       let quantia = this.formulario.get('quantia')?.value;
       let contaId = this.formulario.get('contaId')?.value;
       console.log("contaId"+contaId);
-      let contaCreditada = this.clienteService.buscarConta(contaId);
-      if(contaCreditada){
-        this.clienteService.transferir(this.cliente.conta, contaCreditada, quantia);
-        this.router.navigate(["/cliente/home"]);
+      let clienteCreditado = this.clienteService.buscarClientePelaContaId(contaId);
+      if(clienteCreditado){
+        this.clienteService.transferir(this.cliente, clienteCreditado, quantia);
+        this.router.navigate(['/cliente/home']);
       }else{
         this.message = "A conta número: "+contaId+" não existe!";
       }

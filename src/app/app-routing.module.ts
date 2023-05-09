@@ -15,6 +15,7 @@ import { TelaInicialComponent } from './gerente/tela-inicial/tela-inicial.compon
 import { DepositarComponent } from './cliente/depositar/depositar.component';
 import { SacarComponent } from './cliente/sacar/sacar.component';
 import { TransferirComponent } from './cliente/transferir/transferir.component';
+import { ExtratoComponent } from './cliente/extrato/extrato.component';
 
 const routes: Routes = [
   {
@@ -73,6 +74,14 @@ const routes: Routes = [
   {
     path: 'cliente/transferir/:id',
     component: TransferirComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'CLIENTE'
+    }  
+  },
+  {
+    path: 'cliente/extrato/:id',
+    component: ExtratoComponent,
     canActivate: [AuthGuard],
     data: {
       role: 'CLIENTE'
