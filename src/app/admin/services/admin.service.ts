@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Gerente } from 'src/app/shared/model/gerente';
 
+
 const LS_CHAVE:string = 'gerentes';
 
 @Injectable({
