@@ -46,4 +46,5 @@ export class AdminService {
 
     localStorage[LS_CHAVE] = JSON.stringify(gerentes);
   }
+  
 }
