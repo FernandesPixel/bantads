@@ -11,6 +11,9 @@ import { ConsultarClienteComponent } from './gerente/consultar-cliente/consultar
 import { ConsultarMelhoresClientesComponent } from './gerente/consultar-melhores-clientes/consultar-melhores-clientes.component';
 import { AuthModule } from './auth/auth.module';
 
+import { AdminComponent } from './admin/admin.component';
+import { AdminModule } from './admin/admin.module';
+
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 
@@ -22,12 +25,14 @@ registerLocaleData(ptBr);
     TelaInicialComponent,
     ListarClientesComponent,
     ConsultarClienteComponent,
-    ConsultarMelhoresClientesComponent
+    ConsultarMelhoresClientesComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ClienteModule,
+    AdminModule,
     AuthModule
   ],
   providers: [

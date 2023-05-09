@@ -17,6 +17,11 @@ import { SacarComponent } from './cliente/sacar/sacar.component';
 import { TransferirComponent } from './cliente/transferir/transferir.component';
 import { ExtratoComponent } from './cliente/extrato/extrato.component';
 
+import { ListarGerenteComponent } from './admin/listar-gerente/listar-gerente.component';
+import { InserirGerenteComponent } from './admin/inserir-gerente/inserir-gerente.component';
+import { EditarGerenteComponent } from './admin/editar-gerente/editar-gerente.component';
+import { RelatorioClienteComponent } from './admin/relatorio-cliente/relatorio-cliente.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -102,6 +107,22 @@ const routes: Routes = [
   {
     path: 'gerente/listar-clientes',
     component: ListarClientesComponent
+  },
+  {
+    path: 'admin',
+    component: ListarGerenteComponent
+  },
+  {
+    path: 'admin/novo',
+    component: InserirGerenteComponent
+  },
+  {
+    path: 'admin/editar/:id',
+    component: EditarGerenteComponent
+  },
+  {
+    path: 'admin/relatorio',
+    component: RelatorioClienteComponent
   },
   {
     path: 'home',
