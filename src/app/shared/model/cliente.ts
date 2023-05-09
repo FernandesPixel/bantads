@@ -8,7 +8,7 @@ export class Cliente extends Usuario{
     
     constructor(
         override id?: number,
-        override nome?: string,
+        override nome: string = "",
         override login?: string,
         override senha?: string,
         override perfil?: string,

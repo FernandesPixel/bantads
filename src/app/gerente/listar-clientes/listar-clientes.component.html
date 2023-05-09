@@ -5,19 +5,19 @@
     <tr>
       <th>CPF</th>
       <th>Nome</th>
-      <th>Salário</th>
-      <th>Gerente</th>
-      <th>Limite</th>
+      <th>Cidade</th>
+      <th>Estado</th>
+      <th>Saldo</th>
       <th>Ações</th>
     </tr>
     <tr *ngFor="let cliente of clientes">
-      <td>{{ cliente.id }}</td>
+      <td>{{ cliente.cpf }}</td>
       <td>{{ cliente.nome }}</td>
-      <td>{{ cliente.salario }}</td>
-      <td>{{ cliente.conta?.gerente }}</td>
-      <td>{{ cliente.conta?.limite }}</td>
+      <td>{{ cliente.endereco?.cidade }}</td>
+      <td>{{ cliente.endereco?.estado }}</td>
+      <td>{{ cliente.conta.saldo }}</td>
       <td class="text-center" style="width: 300px;">
-        <a [routerLink]="['/cliente', cliente.id]">Ver detalhes</a>
+        <a [routerLink]="['/gerente/consultar-cliente', cliente.id]">Ver detalhes</a>
       </td>
     </tr>
   </tbody>

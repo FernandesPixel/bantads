@@ -1,1 +1,25 @@
-<p>consultar-melhores-clientes works!</p>
+<h1>Clientes</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <tbody>
+    <tr>
+      <th>CPF</th>
+      <th>Nome</th>
+      <th>Cidade</th>
+      <th>Estado</th>
+      <th>Saldo</th>
+      <th>Ações</th>
+    </tr>
+    <tr *ngFor="let cliente of clientes">
+      <td>{{ cliente.cpf }}</td>
+      <td>{{ cliente.nome }}</td>
+      <td>{{ cliente.endereco?.cidade }}</td>
+      <td>{{ cliente.endereco?.estado }}</td>
+      <td>{{ cliente.conta.saldo }}</td>
+      <td class="text-center" style="width: 300px;">
+        <a [routerLink]="['/gerente/consultar-cliente', cliente.id]">Ver detalhes</a>
+      </td>
+    </tr>
+  </tbody>
+  <p *ngIf="clientes.length === 0">Nenhum cliente encontrado</p>
+</table>

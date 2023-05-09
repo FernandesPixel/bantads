@@ -1,6 +1,6 @@
 <h1>Clientes</h1>
-
-<table class="table table-striped table-bordered table-hover">
+<a [routerLink]="['/gerente/listar-clientes']" class="btn btn-info mx-2">Listar cliente</a>
+<table class="table table-striped table-bordered table-hover mt-2">
     <tbody>
         <tr>
             <th>CPF</th>
@@ -9,7 +9,7 @@
             </th>
         </tr>
         <tr *ngFor="let cliente of clientes">
-            <td>{{ cliente.id }}</td>
+            <td>{{ cliente.cpf }}</td>
             <td>{{ cliente.nome }}</td>
             <td>{{ cliente.salario }}</td>
             <td class="text-center" style="width: 300px;">

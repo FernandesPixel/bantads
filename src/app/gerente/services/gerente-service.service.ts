@@ -29,7 +29,33 @@ export class GerenteService {
     return clientes.filter(
       cliente => cliente.conta &&
       cliente.conta.status === StatusConta.ATIVA
-    );
+    ).sort((cliente1, cliente2) => {
+      if (cliente1.nome < cliente2.nome) {
+        return -1;
+      }
+      if (cliente1.nome > cliente2.nome) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+
+  obterMlehoresClientes(): Cliente[] {
+    const clientes = this.listarTodos();
+    return clientes.filter(
+      cliente => cliente.conta &&
+      cliente.conta.status === StatusConta.ATIVA
+    )
+    .sort((cliente1, cliente2) => {
+      if (cliente1.conta.saldo > cliente2.conta.saldo) {
+        return -1;
+      }
+      if (cliente1.conta.saldo < cliente2.conta.saldo) {
+        return 1;
+      }
+      return 0;
+    })
+    .slice(0,3);
   }
 
   private atualizarCliente(cliente: Cliente): void {

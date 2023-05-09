@@ -1,1 +1,80 @@
-<p>consultar-cliente works!</p>
+<div class="container mt-3">
+    <h1>Cliente</h1>
+
+    <div *ngIf="message" class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{message}}
+        <a href="#" class="close" data-dimiss="alert" aria-label="close">&times;</a>
+        <button type="button" class="close" data-dimiss="alert" aria-label="close"
+        (click)="$event.preventDefault()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <form>
+        <div class="form-group row">
+            <div class="col-1">
+                <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" value="{{ cliente.id }}" readonly>
+            </div>
+        
+            <div class="col">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" value="{{ cliente.nome }}" readonly>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-4">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" id="email" value="{{ cliente.email }}" readonly>
+            </div>
+            <div class="col-4">
+                <label for="telefone">Telefone</label>
+                <input type="text" class="form-control" id="telefone" value="{{ cliente.telefone }}" readonly>
+            </div>
+            <div class="col-4">
+                <label for="cpf">CPF</label>
+                <input type="text" class="form-control" id="cpf" value="{{ cliente.cpf }}" readonly>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="endereco">Endereço</label>
+            <input type="text" class="form-control" id="endereco" value="{{ cliente.endereco?.cidade }} - {{ cliente.endereco?.estado }}" readonly>
+        </div>
+
+        <fieldset>
+            <legend>Conta</legend>
+            <div class="form-group row">
+                <div class="col">
+                    <label for="saldo">Saldo</label>
+                    <input type="text" class="form-control" id="saldo" value="{{ cliente.conta.saldo | currency: 'BRL' }}" readonly>
+                </div>
+
+                <div class="col">
+                    <label for="limite">Limite</label>
+                    <input type="text" class="form-control" id="limite" value="{{ cliente.conta.limite | currency: 'BRL' }}" readonly>    
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-3">
+                    <label for="idGerente">Gerente</label>
+                    <input type="text" class="form-control" id="idGerente" value="{{ cliente.conta.gerente.nome }}" readonly>
+                </div>
+                <div class="col">
+                    <label for="status">Status</label>
+                    <input type="text" class="form-control" id="status" value="{{ cliente.conta.status }}" readonly>    
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+        <legend>Informações Financeiras</legend>
+        
+        <div class="form-group">
+            <label for="salario">Salário</label>
+            <input type="text" class="form-control" id="salario" value="{{ cliente.salario | currency: 'BRL' }}" readonly>
+        </div>
+        </fieldset>
+    </form>
+  
+</div>
