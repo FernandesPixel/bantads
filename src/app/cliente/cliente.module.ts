@@ -10,6 +10,9 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { HomeClienteComponent } from './home-cliente/home-cliente.component';
 import { AuthModule } from '../auth/auth.module';
 import { DepositarComponent } from './depositar/depositar.component';
+import { SacarComponent } from './sacar/sacar.component';
+import { TransferirComponent } from './transferir/transferir.component';
+import { ExtratoComponent } from './extrato/extrato.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import { DepositarComponent } from './depositar/depositar.component';
     CampoControlErroComponent,
     HomeClienteComponent,
     DepositarComponent,
+    SacarComponent,
+    TransferirComponent,
+    ExtratoComponent,
   ],
   imports: [
     CommonModule,

@@ -13,6 +13,9 @@ import { ConsultarMelhoresClientesComponent } from './gerente/consultar-melhores
 import { ListarClientesComponent } from './gerente/listar-clientes/listar-clientes.component';
 import { TelaInicialComponent } from './gerente/tela-inicial/tela-inicial.component';
 import { DepositarComponent } from './cliente/depositar/depositar.component';
+import { SacarComponent } from './cliente/sacar/sacar.component';
+import { TransferirComponent } from './cliente/transferir/transferir.component';
+import { ExtratoComponent } from './cliente/extrato/extrato.component';
 
 const routes: Routes = [
   {
@@ -55,6 +58,30 @@ const routes: Routes = [
   {
     path: 'cliente/depositar/:id',
     component: DepositarComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'CLIENTE'
+    }  
+  },
+  {
+    path: 'cliente/sacar/:id',
+    component: SacarComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'CLIENTE'
+    }  
+  },
+  {
+    path: 'cliente/transferir/:id',
+    component: TransferirComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'CLIENTE'
+    }  
+  },
+  {
+    path: 'cliente/extrato/:id',
+    component: ExtratoComponent,
     canActivate: [AuthGuard],
     data: {
       role: 'CLIENTE'

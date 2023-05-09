@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +10,11 @@ import { ListarClientesComponent } from './gerente/listar-clientes/listar-client
 import { ConsultarClienteComponent } from './gerente/consultar-cliente/consultar-cliente.component';
 import { ConsultarMelhoresClientesComponent } from './gerente/consultar-melhores-clientes/consultar-melhores-clientes.component';
 import { AuthModule } from './auth/auth.module';
+
+import ptBr from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
@@ -24,7 +30,9 @@ import { AuthModule } from './auth/auth.module';
     ClienteModule,
     AuthModule
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'pt' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
